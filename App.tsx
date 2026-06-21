@@ -41,13 +41,123 @@ function openCheckoutForm() {
 }
 
 const CURSOS = [
-  { nome: 'Coleção Preciosidades', desc: 'Peças sacras de alta percepção de valor. A base do ateliê da Rita.', img: '/img/pecas/preciosidades-01.jpg' },
-  { nome: 'Técnicas Monocromáticas', desc: 'Acabamento sofisticado em uma única cor. Mármore, bronze, madeira.', img: '/img/pecas/peca-08.jpg' },
-  { nome: 'Nossa Senhora de Guadalupe', desc: 'A imagem mais pedida do Brasil. Do começo ao fim, com customização exclusiva.', img: '/img/pecas/guadalupe-01.jpg' },
-  { nome: 'Degradê', desc: 'O método das 3 camadas. A tinta certa, a ordem certa, o tempo certo.', img: '/img/pecas/guadalupe-02.jpg' },
-  { nome: 'Customize', desc: 'Personalização avançada de imagens religiosas. Transforma uma peça padrão em arte única.', img: '/img/pecas/preciosidades-02.jpg' },
-  { nome: 'Combo 4 Cursos (Mini Combo)', desc: 'Os 4 cursos essenciais agrupados. Base sólida pra começar.', img: '/img/pecas/peca-09.jpg' },
-  { nome: 'Do Altar ao Lar', desc: 'O ecossistema completo pra atender noivas católicas. Coleção que noiva paga acima de R$ 2.000.', img: '/img/pecas/peca-01.jpg' },
+  {
+    nome: 'Coleção Preciosidades',
+    desc: 'Peças sacras de alta percepção de valor. A base do ateliê da Rita.',
+    img: '/img/pecas/preciosidades-01.jpg',
+    modulos: [
+      'Aparecida com customização chaton e pedrarias (peça de gesso vira joia)',
+      'Forração francesa (caixas, altares, Bíblia forrada)',
+      'Linha de armados (ramos de flores pra altar, escapulários, quadros)',
+      'Tesouro do Ateliê / linha de pedrarias (pingentes, colares, escapulários, modelo de terço)',
+      'Marcadores e chaveiros (reaproveitamento de material)',
+      'Lista secreta de fornecedores (atacado)',
+    ],
+    pilares: ['Base estrutural', 'Precificação e venda', 'Acabamento premium com valor percebido elevado'],
+    projecao: 'Custo material a partir de R$ 20 · Lucro líquido R$ 135 por peça · Venda R$ 150-350 · Com 3 peças o curso se paga',
+    ia: { nome: 'IA Mentora Preciosidades', desc: 'Te ajuda a precificar cada peça e responde dúvidas sobre customização chaton, pedrarias e forração 24h por dia.' },
+  },
+  {
+    nome: 'Técnicas Monocromáticas',
+    desc: 'Acabamento sofisticado em uma única cor. Mármore, bronze, madeira.',
+    img: '/img/pecas/peca-08.jpg',
+    modulos: [
+      'Base: preparação e reparos no gesso/resina',
+      'Tipos de betume (qual usa pra que)',
+      'Branco com envelhecimento',
+      'Técnica do urso (com envelhecimento e dourado)',
+      'Efeito madeira em várias formas (adaptáveis ao material da região)',
+      'Porcelana portuguesa (tinta óleo)',
+      'Pedra (tinta óleo e acrílica)',
+      'Ouro velho, Provençal, Monocromática em óleo, Efeito mármore',
+      'Monte Sant\'Angelo / Gargano (mármore branco polido)',
+      'Prata velho ouro, Polimento em resina, Dourados, Terracota',
+      'Madeira nobre, Técnica Veronese, Efeito laca',
+      'Bônus: Lista premium de fornecedores',
+    ],
+    projecao: 'Valor percebido por peça R$ 350-800 · Margem R$ 190 por peça · Faturamento potencial R$ 3.100-6.500/mês · Com 2 peças o curso se paga',
+    ia: { nome: 'IA Mentora Monocromática', desc: 'Sugere combinações de cor, tipo de betume ideal pra cada efeito e te orienta na sequência de aplicação das camadas.' },
+  },
+  {
+    nome: 'Nossa Senhora de Guadalupe',
+    desc: 'A imagem mais pedida do Brasil. Do começo ao fim, com customização exclusiva.',
+    img: '/img/pecas/guadalupe-01.jpg',
+    modulos: [
+      'Preparo da peça',
+      'Receitas utilizadas',
+      'Pintura tradicional (versão clássica)',
+      'Betume e polimento',
+      'Contornos e detalhes',
+      'Técnica do Esponjado (diferencial pouco conhecida no Brasil): pintura, esponjando, decoupage, dourado, colagens de chaton, betume e finalização',
+      'Decoupage com Efeito Porcelana (pra quem não quer fazer rostinho): base, aplicação de decoupage e efeito porcelana',
+    ],
+    projecao: 'Custo de produção ~R$ 40 · Venda ~R$ 250 · Lucro R$ 210 por peça · 10 peças/mês = R$ 2.100 de renda extra',
+    ia: { nome: 'IA Mentora Guadalupe', desc: 'Te conta a narrativa devocional da imagem pra você vender com história e responde dúvidas sobre cada técnica.' },
+  },
+  {
+    nome: 'Degradê',
+    desc: 'O método das 3 camadas. A tinta certa, a ordem certa, o tempo certo.',
+    img: '/img/pecas/guadalupe-02.jpg',
+    modulos: [
+      'Degradê em tinta acrílica fosca (Nossa Senhora Aparecida)',
+      'Degradê em tinta metálica (degradê incrível)',
+      'Envelhecimento sobre degradê',
+      'Degradê em tinta a óleo (mais fácil pro degradê, segundo a Rita)',
+      'Material de apoio: apostila no final de cada técnica',
+    ],
+    projecao: 'Técnica de diferenciação grande na peça · "Chove de comentários" quando aparece · Aluno entra fazendo nada e sai fazendo peças vendáveis',
+    ia: { nome: 'IA Calibrador de Camadas', desc: 'Te orienta no tempo entre camadas, escolha da tinta certa pra cada efeito e correção quando borrar.' },
+  },
+  {
+    nome: 'Customize',
+    desc: 'Personalização avançada de imagens religiosas. Transforma uma peça padrão em arte única.',
+    img: '/img/pecas/preciosidades-02.jpg',
+    modulos: [
+      'Fundação: cores e brancos, dourados, impermeabilização do gesso, PVA x acrílica, reparos no gesso',
+      'N. Sra. Aparecida com manto em renda (iniciante mas requintada)',
+      'Aplicação de renda em geral',
+      'Customização com flores',
+      'Customização com pérolas (cartela e soltas)',
+      'Pintura dourada',
+      'Mosaico de pérolas (pérolas soltas se encaixando)',
+      'Renda com florzinhas soltas (redinha soltinha)',
+      'Pintura branca que não amarela',
+      'Pintura pérola com forração do manto em linho',
+      'Técnica de Copa (decoupagem com guardanapos)',
+    ],
+    projecao: 'Venda ~R$ 200 por peça · Custo material ~R$ 50 · Faturamento R$ 2.800-6.200/mês · Com 3 peças o curso se paga',
+    ia: { nome: 'IA Pérolas & Padrões', desc: 'Sugere combinação de pérolas, rendas e tecidos pra cada tipo de peça e te ajuda no orçamento de material.' },
+  },
+  {
+    nome: 'Combo 4 Cursos (Mini Combo)',
+    desc: 'Os 4 cursos essenciais agrupados. Base sólida pra começar.',
+    img: '/img/pecas/peca-09.jpg',
+    modulos: [
+      'Sagrada Família: pintura perolada, betume sem erros, técnica básica de rostos, dourado, envelhecimento',
+      'Santa Rita (Pintura a Óleo): introdução à óleo, luz e sombra, acabamento elegante',
+      'Monocromática Veronese: pintura monocromática, envelhecimento, mix de ceras',
+      'Pincel Seco + Efeito Mármore: profundidade, realce de luz, efeito mármore, acabamento profissional',
+    ],
+    projecao: 'Custo por peça ~R$ 40 · Venda ~R$ 250 · 10 peças/mês = até R$ 2.100/mês',
+    ia: { nome: 'IA Mentora de Bolso', desc: 'Te tira dúvida 24h em qualquer um dos 4 cursos, sugere ordem de estudo e calcula preço de cada peça.' },
+  },
+  {
+    nome: 'Do Altar ao Lar',
+    desc: 'O ecossistema completo pra atender noivas católicas. Coleção que noiva paga acima de R$ 2.000.',
+    img: '/img/pecas/peca-01.jpg',
+    modulos: [
+      'Aulas AO VIVO: Altar (porta-aliança que vira altar) e Terço Bordado',
+      'Coleção completa gravada das 5 peças (altar, terço bordado, caixa de padrinhos com tampo acrílico, porta-aliança com forração francesa, caixa acrílica multifuncional)',
+      'Aula de POSICIONAMENTO no mercado de noivas católicas',
+      'Aula de COMO ATENDER A NOIVA (perguntas, fundamentos, cuidados)',
+      '2 TÉCNICAS DE PINTURA (polimento + finalização brilhante)',
+      'Aula de CUSTOMIZAÇÃO da imagem',
+      'LINK DE PRECIFICAÇÃO pra calcular preço de cada peça',
+      'Grupo exclusivo de alunas + indicação de fornecedores',
+    ],
+    projecao: 'Coleção que noiva paga acima de R$ 2.000 · Ticket médio do nicho de noiva R$ 1.500-4.000 por noiva atendida',
+    ia: { nome: 'IA Atendimento Noiva', desc: 'Te dá script de atendimento, calcula orçamento da coleção da noiva e responde dúvidas sobre posicionamento no mercado nupcial.' },
+  },
 ];
 
 const GALERIA_PECAS = [
@@ -492,7 +602,92 @@ function Dobra5PassoAPasso() {
 }
 
 // =================== DOBRA 6 — TUDO QUE RECEBE ===================
+function CursoAccordionCard({ curso, isOpen, onToggle }: { curso: typeof CURSOS[0]; isOpen: boolean; onToggle: () => void }) {
+  return (
+    <div className="bg-gradient-to-r from-white to-[#F5EFE6] border-2 border-[#E8DFD0] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+      <div className="flex items-stretch gap-4">
+        <div className="shrink-0 w-24 md:w-32 relative">
+          <img src={curso.img} alt={curso.nome} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+        </div>
+        <div className="flex-1 p-4 md:p-5">
+          <div className="flex items-start gap-3 mb-2">
+            <div className="shrink-0 w-8 h-8 bg-gradient-to-br from-[#22C55E] to-[#16A34A] text-white rounded-full flex items-center justify-center">
+              <Check size={16} strokeWidth={3} />
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <h3 className="text-base md:text-xl font-bold text-[#3D3D3D]">{curso.nome}</h3>
+                <span className="text-xs md:text-sm font-bold text-[#A8261E] bg-[#A8261E]/10 border border-[#A8261E]/30 px-3 py-1 rounded-full whitespace-nowrap">R$ 297 / ano</span>
+              </div>
+              <p className="text-sm text-[#5C4033] leading-relaxed mt-1">{curso.desc}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        onClick={onToggle}
+        className={`w-full px-4 py-3 md:py-4 font-bold text-sm md:text-base text-white transition-all flex items-center justify-center gap-2 ${
+          isOpen
+            ? 'bg-gradient-to-r from-[#3D3D3D] to-[#1F1B16]'
+            : 'bg-gradient-to-r from-[#B3541E] to-[#A8261E] hover:from-[#C5631E] hover:to-[#B3361E] animate-pulse'
+        }`}
+      >
+        {isOpen ? (
+          <>FECHAR DETALHES <ChevronRight size={18} className="rotate-90" /></>
+        ) : (
+          <>👆 TOQUE AQUI PRA VER TUDO SOBRE ESSE CURSO <ChevronRight size={18} className="rotate-90" /></>
+        )}
+      </button>
+      {isOpen && (
+        <div className="px-5 md:px-8 py-6 bg-[#FDF9F3] border-t-2 border-[#C5A059]/30 space-y-5">
+          <div>
+            <h4 className="text-sm font-bold text-[#B3541E] uppercase tracking-wider mb-3">📚 O que você vai aprender</h4>
+            <ul className="space-y-2">
+              {curso.modulos.map((m, j) => (
+                <li key={j} className="flex gap-2 text-sm md:text-base text-[#3D3D3D] leading-relaxed">
+                  <Check className="shrink-0 text-[#22C55E] mt-1" size={16} />
+                  <span>{m}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          {curso.pilares && (
+            <div>
+              <h4 className="text-sm font-bold text-[#B3541E] uppercase tracking-wider mb-3">🏛️ Pilares do método</h4>
+              <ul className="space-y-2">
+                {curso.pilares.map((p, j) => (
+                  <li key={j} className="flex gap-2 text-sm md:text-base text-[#3D3D3D]">
+                    <span className="text-[#C5A059] font-bold">{j+1}.</span>
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          <div className="bg-[#C5A059]/10 border border-[#C5A059]/30 rounded-xl p-4">
+            <h4 className="text-sm font-bold text-[#C5A059] uppercase tracking-wider mb-2">💎 Projeção financeira</h4>
+            <p className="text-sm text-[#3D3D3D] leading-relaxed">{curso.projecao}</p>
+          </div>
+          <div className="bg-gradient-to-br from-[#1F1B16] to-[#3D3D3D] text-white rounded-xl p-4 md:p-5 border-2 border-[#C5A059]/50">
+            <div className="flex items-start gap-3">
+              <div className="shrink-0 w-10 h-10 bg-gradient-to-br from-[#C5A059] to-[#B3541E] rounded-full flex items-center justify-center text-xl">
+                🤖
+              </div>
+              <div className="flex-1">
+                <p className="text-xs font-bold text-[#C5A059] uppercase tracking-wider mb-1">IA DE BÔNUS · EXCLUSIVA DO COMBO</p>
+                <h5 className="text-base md:text-lg font-bold mb-1">{curso.ia.nome}</h5>
+                <p className="text-sm text-[#D4C4A8] leading-relaxed">{curso.ia.desc}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function Dobra6TudoQueRecebe() {
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
   return (
     <section className="py-16 md:py-20 px-4 bg-[#FDF9F3]">
       <div className="container mx-auto max-w-4xl">
@@ -504,28 +699,16 @@ function Dobra6TudoQueRecebe() {
           <p className="text-base md:text-lg text-[#5C4033] max-w-2xl mx-auto">
             Pagando avulso, cada um custa <span className="font-bold text-[#A8261E]">R$ 297 por ano</span>. Multiplicado pelos 7, dá <span className="font-bold text-[#A8261E]">R$ 2.079 todo ano</span>. Hoje, vitalício, UMA ÚNICA VEZ, leva os 7 por R$ 697.
           </p>
+          <p className="text-sm text-[#8B7355] italic mt-4">👆 Toque em cada curso pra ver tudo o que vem dentro + a IA de bônus</p>
         </div>
         <div className="space-y-3">
           {CURSOS.map((c, i) => (
-            <div key={i} className="flex items-stretch gap-4 bg-gradient-to-r from-white to-[#F5EFE6] border-2 border-[#E8DFD0] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-              <div className="shrink-0 w-24 md:w-32 relative">
-                <img src={c.img} alt={c.nome} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-              </div>
-              <div className="flex-1 p-4 md:p-5">
-                <div className="flex items-start gap-3 mb-2">
-                  <div className="shrink-0 w-8 h-8 bg-gradient-to-br from-[#22C55E] to-[#16A34A] text-white rounded-full flex items-center justify-center">
-                    <Check size={16} strokeWidth={3} />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between gap-2 flex-wrap">
-                      <h3 className="text-base md:text-xl font-bold text-[#3D3D3D]">{c.nome}</h3>
-                      <span className="text-xs md:text-sm font-bold text-[#A8261E] bg-[#A8261E]/10 border border-[#A8261E]/30 px-3 py-1 rounded-full whitespace-nowrap">R$ 297 / ano</span>
-                    </div>
-                    <p className="text-sm text-[#5C4033] leading-relaxed mt-1">{c.desc}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <CursoAccordionCard
+              key={i}
+              curso={c}
+              isOpen={openIdx === i}
+              onToggle={() => setOpenIdx(openIdx === i ? null : i)}
+            />
           ))}
         </div>
         <div className="mt-10 bg-gradient-to-br from-[#1F1B16] to-[#2C2620] text-white rounded-3xl p-8 md:p-10 shadow-2xl">
