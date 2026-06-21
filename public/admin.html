@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Inscrições · Do Altar ao Lar · 22/06</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Inter, system-ui, sans-serif; background: #FDF9F3; color: #3D3D3D; min-height: 100vh; }
+    header { background: linear-gradient(135deg, #B3541E, #8B4513); color: #FDF9F3; padding: 1.25rem 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,.1); position: sticky; top: 0; z-index: 50; }
+    header .row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; max-width: 1400px; margin: 0 auto; }
+    header h1 { font-size: 1.15rem; font-weight: 700; }
+    header .stats { display: flex; gap: 1.5rem; font-size: .9rem; }
+    header .stats b { color: #FFD700; font-size: 1.1rem; }
+
+    .login { max-width: 380px; margin: 8vh auto; padding: 2rem; background: #fff; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+    .login h2 { font-size: 1.5rem; color: #B3541E; margin-bottom: 1rem; text-align: center; }
+    .login input { width: 100%; padding: .85rem 1rem; border: 2px solid #E8DFD0; border-radius: 8px; font-size: 1rem; margin-bottom: 1rem; }
+    .login button { width: 100%; padding: .85rem; background: #B3541E; color: #fff; border: 0; border-radius: 8px; font-weight: 600; font-size: 1rem; cursor: pointer; }
+    .login button:hover { background: #8B4513; }
+    .login .err { color: #B3541E; font-size: .85rem; margin-bottom: 1rem; text-align: center; }
+
+    main { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
+    .filters { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .filters input, .filters select { padding: .6rem .9rem; border: 1px solid #D4C4A8; border-radius: 8px; font-size: .9rem; font-family: inherit; }
+    .filters input[type=text] { flex: 1; min-width: 200px; }
+    .filters button { padding: .6rem 1.2rem; border: 0; border-radius: 8px; background: #C5A059; color: #fff; cursor: pointer; font-weight: 600; }
+
+    .leads-grid { display: grid; gap: .65rem; }
+    .lead { background: #fff; border: 1px solid #E8DFD0; border-radius: 12px; padding: 1rem; display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: center; transition: box-shadow .2s; }
+    .lead:hover { box-shadow: 0 4px 12px rgba(0,0,0,.06); }
+    .lead .info h3 { font-size: 1.05rem; color: #3D3D3D; font-weight: 600; }
+    .lead .info .meta { font-size: .85rem; color: #8B7355; margin-top: .25rem; display: flex; flex-wrap: wrap; gap: .75rem; }
+    .lead .info .meta span { white-space: nowrap; }
+    .lead .info .tags { margin-top: .4rem; display: flex; gap: .35rem; flex-wrap: wrap; }
+    .lead .tag { font-size: .7rem; padding: .15rem .55rem; border-radius: 99px; background: #F5EFE6; color: #8B7355; border: 1px solid #E8DFD0; }
+    .lead .tag.utm { background: #EFE3D6; color: #8B5A2B; }
+    .lead .actions { display: flex; gap: .4rem; }
+    .lead .btn-wa { background: #25D366; color: #fff; padding: .65rem 1rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: .85rem; display: inline-flex; align-items: center; gap: .35rem; }
+    .lead .btn-wa:hover { background: #1ebd5b; }
+    .lead .btn-copy { background: #E8DFD0; color: #5C4033; padding: .65rem .85rem; border-radius: 8px; cursor: pointer; border: 0; font-size: .8rem; }
+
+    .empty { text-align: center; padding: 4rem 1rem; color: #8B7355; }
+    .empty h2 { font-size: 1.3rem; margin-bottom: .5rem; color: #B3541E; }
+    .loading { text-align: center; padding: 3rem; color: #8B7355; }
+    .err-box { background: #FEEBEC; color: #B3541E; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; }
+
+    @media (max-width: 600px) {
+      .lead { grid-template-columns: 1fr; }
+      .lead .actions { justify-content: flex-end; }
+      header h1 { font-size: 1rem; }
+      header .stats { gap: 1rem; font-size: .8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <div class="row">
+        <h1>Inscrições · Curso AO VIVO Do Altar ao Lar · 22/06</h1>
+        <div class="stats">
+          <span>Total <b id="total">0</b></span>
+          <span>Últimas 24h <b id="last24">0</b></span>
+          <span>Última atualização <b id="updated">—</b></span>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="filters">
+        <input type="text" id="search" placeholder="Buscar por nome, email ou telefone…">
+        <select id="filterTime">
+          <option value="all">Todo período</option>
+          <option value="24h">Últimas 24h</option>
+          <option value="2h">Últimas 2h</option>
+        </select>
+        <button onclick="loadLeads(true)">↻ Atualizar</button>
+        <button onclick="exportCSV()" style="background: #5C4033">Exportar CSV</button>
+      </div>
+      <div id="utmStats" style="background:#fff;border:1px solid #E8DFD0;border-radius:12px;padding:1rem;margin-bottom:1rem">
+        <h3 style="font-size:1rem;font-weight:600;color:#B3541E;margin-bottom:.6rem">📊 Conversões por anúncio</h3>
+        <div id="utmStatsBody" style="font-size:.85rem;color:#5C4033">Calculando…</div>
+      </div>
+
+      <div id="leadsList" class="leads-grid">
+        <div class="loading">Carregando…</div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    let LEADS = [];
+
+    const BACKEND = 'https://mighty-dont-supplemental-perfume.trycloudflare.com';
+
+    async function loadLeads() {
+      try {
+        const r = await fetch(BACKEND + '/api/leads', { cache: 'no-store' });
+        const d = await r.json();
+        if (!d.ok) return;
+        LEADS = d.leads || [];
+        $('total').textContent = LEADS.length;
+        const now = Date.now();
+        $('last24').textContent = LEADS.filter(l => (now - new Date(l.timestamp).getTime()) < 86400000).length;
+        $('updated').textContent = new Date().toLocaleTimeString('pt-BR');
+        renderUtmStats(LEADS);
+        renderLeads();
+      } catch (e) { /* silent */ }
+    }
+
+    function renderUtmStats(leads) {
+      const buckets = {};
+      leads.forEach(l => {
+        const key = (l.utm_campaign || '—') + ' · ' + (l.utm_content || '—');
+        const src = l.utm_source || '—';
+        if (!buckets[key]) buckets[key] = { campaign: l.utm_campaign || '—', content: l.utm_content || '—', source: src, total: 0 };
+        buckets[key].total++;
+      });
+      const arr = Object.values(buckets).sort((a,b) => b.total - a.total);
+      if (!arr.length) { $('utmStatsBody').innerHTML = '<em>Sem dados ainda.</em>'; return; }
+      $('utmStatsBody').innerHTML = '<table style="width:100%;border-collapse:collapse;font-size:.85rem"><thead><tr style="border-bottom:1px solid #E8DFD0;text-align:left"><th style="padding:.35rem .4rem">Campanha</th><th style="padding:.35rem .4rem">Anúncio (content)</th><th style="padding:.35rem .4rem">Fonte</th><th style="padding:.35rem .4rem;text-align:right">Conversões</th></tr></thead><tbody>' +
+        arr.slice(0,15).map(r => `<tr style="border-bottom:1px dashed #F1ECE0"><td style="padding:.35rem .4rem">${escapeHtml(r.campaign)}</td><td style="padding:.35rem .4rem">${escapeHtml(r.content)}</td><td style="padding:.35rem .4rem">${escapeHtml(r.source)}</td><td style="padding:.35rem .4rem;text-align:right"><b style="color:#B3541E">${r.total}</b></td></tr>`).join('') +
+        '</tbody></table>';
+    }
+
+    function renderLeads() {
+      const q = $('search').value.toLowerCase().trim();
+      const time = $('filterTime').value;
+      const now = Date.now();
+      const filtered = LEADS.filter(l => {
+        const matchQ = !q ||
+          (l.nome||'').toLowerCase().includes(q) ||
+          (l.email||'').toLowerCase().includes(q) ||
+          (l.telefone||'').includes(q);
+        const age = now - new Date(l.timestamp).getTime();
+        const matchTime = time === 'all' ||
+          (time === '24h' && age < 86400000) ||
+          (time === '2h' && age < 7200000);
+        return matchQ && matchTime;
+      });
+
+      const list = $('leadsList');
+      if (!filtered.length) {
+        list.innerHTML = `<div class="empty"><h2>Nenhuma inscrição ainda</h2><p>As novas vão aparecer aqui automaticamente.</p></div>`;
+        return;
+      }
+
+      list.innerHTML = filtered.map(l => {
+        const tel = (l.telefone || '').replace(/\D/g, '');
+        const wa = tel ? `https://wa.me/55${tel}?text=` + encodeURIComponent(`Oi ${l.nome.split(' ')[0]}, aqui é a Julia do time da Rita Machado! Vi que você se inscreveu no Curso AO VIVO Do Altar ao Lar dia 22/06. Posso te tirar alguma dúvida?`) : '#';
+        const date = new Date(l.timestamp).toLocaleString('pt-BR');
+        const tags = [];
+        if (l.utm_source) tags.push(`<span class="tag utm">utm: ${l.utm_source}</span>`);
+        if (l.utm_campaign) tags.push(`<span class="tag utm">camp: ${l.utm_campaign}</span>`);
+        if (l.referrer) tags.push(`<span class="tag">ref: ${new URL(l.referrer).hostname.slice(0, 25)}</span>`);
+        return `
+          <div class="lead">
+            <div class="info">
+              <h3>${escapeHtml(l.nome)}</h3>
+              <div class="meta">
+                <span>📧 ${escapeHtml(l.email)}</span>
+                <span>📱 ${escapeHtml(l.telefone || '—')}</span>
+                <span>🕒 ${date}</span>
+              </div>
+              ${tags.length ? `<div class="tags">${tags.join('')}</div>` : ''}
+            </div>
+            <div class="actions">
+              ${tel ? `<a class="btn-wa" href="${wa}" target="_blank">💬 WhatsApp</a>` : ''}
+              <button class="btn-copy" onclick="copyLead('${escapeAttr(l.email)}','${escapeAttr(l.telefone)}')">Copiar</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function escapeHtml(s) { return String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+    function escapeAttr(s) { return String(s||'').replace(/'/g,"\\'"); }
+
+    function copyLead(email, tel) {
+      navigator.clipboard.writeText(`${email} · ${tel}`);
+    }
+
+    function exportCSV() {
+      const headers = ['Timestamp','Nome','Email','Telefone','UTM Source','UTM Campaign','Referrer'];
+      const rows = LEADS.map(l => [l.timestamp, l.nome, l.email, l.telefone, l.utm_source, l.utm_campaign, l.referrer].map(v => `"${(v||'').replace(/"/g,'""')}"`).join(','));
+      const csv = [headers.join(','), ...rows].join('\n');
+      const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+      const a = document.createElement('a');
+      a.href = url; a.download = `inscricoes-${new Date().toISOString().slice(0,10)}.csv`; a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    $('search').addEventListener('input', renderLeads);
+    $('filterTime').addEventListener('change', renderLeads);
+
+    // Boot
+    loadLeads();
+    setInterval(loadLeads, 30000);
+  </script>
+</body>
+</html>

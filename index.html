@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Combo 7 Cursos Rita Machado · Acesso Vitalício · R$ 697</title>
+    <meta name="description" content="Os 7 cursos vitalícios da Rita Machado num combo único. De R$ 2.079 por R$ 697 à vista ou 12x R$ 67,89. Oferta exclusiva ao vivo, vagas limitadas." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <style>
+      *{box-sizing:border-box;margin:0;padding:0}
+      html{scroll-behavior:smooth}
+      body{font-family:'Lato',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background-color:#FDF9F3;color:#3D3D3D;overflow-x:hidden;min-height:100vh}
+      #root{min-height:100vh}
+      h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',Georgia,serif}
+      #loading-indicator{position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#B3541E,#C5A059);z-index:9999;animation:loading-bar 1s ease-in-out infinite}
+      @keyframes loading-bar{0%{transform:translateX(-100%)}50%{transform:translateX(0)}100%{transform:translateX(100%)}}
+    </style>
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;700;800&display=swap" rel="stylesheet"></noscript>
+  </head>
+  <body class="antialiased">
+    <div id="loading-indicator"></div>
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
+    <script>
+      window.addEventListener('load', function() {
+        var loader = document.getElementById('loading-indicator');
+        if (loader) loader.style.display = 'none';
+      });
+    </script>
+    <!-- Meta Pixel -->
+    <script>
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '334523240962378');
+          fbq('track', 'PageView');
+        }, 100);
+      });
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=334523240962378&ev=PageView&noscript=1" /></noscript>
+    <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-subids async defer></script>
+  </body>
+</html>
