@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex,nofollow" />
-  <title>Inscrições · Do Altar ao Lar · 22/06</title>
+  <title>Inscrições · Combo 7 Cursos · R$ 697</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -59,7 +59,7 @@
   <div id="app">
     <header>
       <div class="row">
-        <h1>Inscrições · Curso AO VIVO Do Altar ao Lar · 22/06</h1>
+        <h1>Inscrições · Combo 7 Cursos · R$ 697</h1>
         <div class="stats">
           <span>Total <b id="total">0</b></span>
           <span>Últimas 24h <b id="last24">0</b></span>
@@ -97,7 +97,7 @@
 
     async function loadLeads() {
       try {
-        const r = await fetch(BACKEND + '/api/leads', { cache: 'no-store' });
+        const r = await fetch(BACKEND + '/api/leads-combo', { cache: 'no-store' });
         const d = await r.json();
         if (!d.ok) return;
         LEADS = d.leads || [];
@@ -149,7 +149,7 @@
 
       list.innerHTML = filtered.map(l => {
         const tel = (l.telefone || '').replace(/\D/g, '');
-        const wa = tel ? `https://wa.me/55${tel}?text=` + encodeURIComponent(`Oi ${l.nome.split(' ')[0]}, aqui é a Julia do time da Rita Machado! Vi que você se inscreveu no Curso AO VIVO Do Altar ao Lar dia 22/06. Posso te tirar alguma dúvida?`) : '#';
+        const wa = tel ? `https://wa.me/55${tel}?text=` + encodeURIComponent(`Oi ${l.nome.split(' ')[0]}, aqui é a Julia do time da Rita Machado! Vi que você se inscreveu no Combo 7 Cursos dia R$ 697. Posso te tirar alguma dúvida?`) : '#';
         const date = new Date(l.timestamp).toLocaleString('pt-BR');
         const tags = [];
         if (l.utm_source) tags.push(`<span class="tag utm">utm: ${l.utm_source}</span>`);
@@ -188,7 +188,7 @@
       const csv = [headers.join(','), ...rows].join('\n');
       const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
       const a = document.createElement('a');
-      a.href = url; a.download = `inscricoes-${new Date().toISOString().slice(0,10)}.csv`; a.click();
+      a.href = url; a.download = `inscricoes-combo-${new Date().toISOString().slice(0,10)}.csv`; a.click();
       URL.revokeObjectURL(url);
     }
 

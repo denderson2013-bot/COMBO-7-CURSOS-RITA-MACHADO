@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Check, X, Star, Crown, Lock, Calendar, Award, Zap, Heart, Sparkles, AlertTriangle, ChevronRight, Clock, Shield } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Check, X, Star, Crown, Lock, Calendar, Award, Zap, Heart, Sparkles, AlertTriangle, ChevronRight, Clock, Shield, Loader2 } from 'lucide-react';
 
 const HOTMART_URL = 'https://pay.hotmart.com/PLACEHOLDER_COMBO_7?off=PLACEHOLDER';
 const WEBHOOK_GHL = 'https://services.leadconnectorhq.com/hooks/k6QjNd1AOBLWkKhLvIP3/webhook-trigger/0a6fc78c-01d7-481a-9e6e-9a1e951eef4a';
-const DASHBOARD_WEBHOOK = 'https://mighty-dont-supplemental-perfume.trycloudflare.com/api/inscricao';
+const DASHBOARD_WEBHOOK_COMBO = 'https://mighty-dont-supplemental-perfume.trycloudflare.com/api/inscricao-combo';
 
 function getCookie(name: string): string {
   if (typeof document === 'undefined') return '';
@@ -19,15 +19,25 @@ function getFbc() {
   return fbclid ? `fb.1.${Date.now()}.${fbclid}` : '';
 }
 
-function goToCheckout() {
-  if (typeof window === 'undefined') return;
+type FormData = { nome: string; email: string; whatsapp: string };
+
+function buildCheckoutUrl(data: FormData): string {
+  if (typeof window === 'undefined') return HOTMART_URL;
   const utm = window.location.search.replace('?', '');
   const sep = HOTMART_URL.includes('?') ? '&' : '?';
-  const url = utm ? `${HOTMART_URL}${sep}${utm}` : HOTMART_URL;
-  if (typeof (window as any).fbq === 'function') {
-    (window as any).fbq('track', 'InitiateCheckout');
+  const params = new URLSearchParams();
+  if (utm) {
+    new URLSearchParams(utm).forEach((v, k) => params.append(k, v));
   }
-  window.location.href = url;
+  if (data.nome) params.append('name', data.nome);
+  if (data.email) params.append('email', data.email);
+  if (data.whatsapp) params.append('phone', data.whatsapp.replace(/\D/g, ''));
+  return `${HOTMART_URL}${sep}${params.toString()}`;
+}
+
+let CTX_SET_OPEN: ((v: boolean) => void) | null = null;
+function openCheckoutForm() {
+  if (CTX_SET_OPEN) CTX_SET_OPEN(true);
 }
 
 const CURSOS = [
@@ -58,7 +68,7 @@ const GALERIA_PECAS = [
 function Btn({ children, large = false }: { children: React.ReactNode; large?: boolean }) {
   return (
     <button
-      onClick={goToCheckout}
+      onClick={openCheckoutForm}
       className={`group inline-flex items-center justify-center gap-2 font-bold text-white bg-gradient-to-br from-[#B3541E] to-[#A8261E] hover:from-[#C5631E] hover:to-[#B3361E] shadow-2xl shadow-[#B3541E]/30 rounded-full transition-all hover:scale-105 active:scale-95 ${
         large ? 'px-8 py-5 text-lg md:text-xl' : 'px-6 py-3 text-base'
       }`}
@@ -66,6 +76,129 @@ function Btn({ children, large = false }: { children: React.ReactNode; large?: b
       {children}
       <ChevronRight className="group-hover:translate-x-1 transition-transform" size={large ? 24 : 18} />
     </button>
+  );
+}
+
+function CheckoutFormModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const [form, setForm] = useState<FormData>({ nome: '', email: '', whatsapp: '' });
+  const [submitting, setSubmitting] = useState(false);
+
+  const formatWA = (v: string) => {
+    const n = v.replace(/\D/g, '');
+    if (n.length <= 2) return n;
+    if (n.length <= 7) return `(${n.slice(0,2)}) ${n.slice(2)}`;
+    return `(${n.slice(0,2)}) ${n.slice(2,7)}-${n.slice(7,11)}`;
+  };
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (submitting) return;
+    setSubmitting(true);
+
+    try {
+      const cleanPhone = form.whatsapp.replace(/\D/g, '');
+      const urlParams = new URLSearchParams(window.location.search);
+      const payload = new URLSearchParams({
+        nome: form.nome,
+        email: form.email,
+        phone: cleanPhone,
+        timestamp: new Date().toISOString(),
+        utm_source: urlParams.get('utm_source') || '',
+        utm_medium: urlParams.get('utm_medium') || '',
+        utm_campaign: urlParams.get('utm_campaign') || '',
+        utm_content: urlParams.get('utm_content') || '',
+        utm_term: urlParams.get('utm_term') || '',
+        referrer: document.referrer || '',
+        fbp: getFbp(),
+        fbc: getFbc(),
+        fbclid: urlParams.get('fbclid') || '',
+      });
+
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(DASHBOARD_WEBHOOK_COMBO, payload);
+        navigator.sendBeacon(WEBHOOK_GHL, payload);
+      } else {
+        fetch(DASHBOARD_WEBHOOK_COMBO, { method: 'POST', body: payload, keepalive: true }).catch(() => {});
+        fetch(WEBHOOK_GHL, { method: 'POST', body: payload, keepalive: true }).catch(() => {});
+      }
+
+      if (typeof (window as any).fbq === 'function') {
+        (window as any).fbq('track', 'InitiateCheckout');
+      }
+    } catch (e) {
+      console.error('webhook err', e);
+    }
+
+    window.location.href = buildCheckoutUrl(form);
+  };
+
+  function getCookie(name: string): string {
+    if (typeof document === 'undefined') return '';
+    const m = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.$?*|{}()[\]\\/+^])/g, '\\$1') + '=([^;]*)'));
+    return m ? decodeURIComponent(m[1]) : '';
+  }
+  function getFbp() { return getCookie('_fbp'); }
+  function getFbc() {
+    const c = getCookie('_fbc');
+    if (c) return c;
+    if (typeof window === 'undefined') return '';
+    const fbclid = new URLSearchParams(window.location.search).get('fbclid');
+    return fbclid ? `fb.1.${Date.now()}.${fbclid}` : '';
+  }
+
+  if (!open) return null;
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm" onClick={onClose}>
+      <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-md p-6 md:p-8" onClick={e => e.stopPropagation()}>
+        <button onClick={onClose} className="absolute top-3 right-3 w-9 h-9 rounded-full bg-[#F5EFE6] hover:bg-[#E8DFD0] text-[#3D3D3D] flex items-center justify-center">
+          <X size={18} />
+        </button>
+        <div className="text-center mb-5">
+          <h3 className="text-2xl md:text-3xl font-bold text-[#3D3D3D] mb-1">Garantir meu combo</h3>
+          <p className="text-sm text-[#5C4033]">Preencha pra ir direto pro pagamento Hotmart</p>
+        </div>
+        <form onSubmit={submit} className="space-y-3">
+          <input
+            type="text"
+            required
+            placeholder="Seu nome completo"
+            value={form.nome}
+            onChange={e => setForm({ ...form, nome: e.target.value })}
+            className="w-full px-4 py-3 border-2 border-[#E8DFD0] focus:border-[#C5A059] rounded-xl text-[#3D3D3D] placeholder-[#8B7355] outline-none transition-colors"
+          />
+          <input
+            type="email"
+            required
+            placeholder="Seu melhor email"
+            value={form.email}
+            onChange={e => setForm({ ...form, email: e.target.value })}
+            className="w-full px-4 py-3 border-2 border-[#E8DFD0] focus:border-[#C5A059] rounded-xl text-[#3D3D3D] placeholder-[#8B7355] outline-none transition-colors"
+          />
+          <input
+            type="tel"
+            required
+            inputMode="numeric"
+            placeholder="WhatsApp com DDD"
+            value={form.whatsapp}
+            onChange={e => setForm({ ...form, whatsapp: formatWA(e.target.value) })}
+            className="w-full px-4 py-3 border-2 border-[#E8DFD0] focus:border-[#C5A059] rounded-xl text-[#3D3D3D] placeholder-[#8B7355] outline-none transition-colors"
+          />
+          <button
+            type="submit"
+            disabled={submitting}
+            className="w-full py-4 bg-gradient-to-br from-[#B3541E] to-[#A8261E] hover:from-[#C5631E] hover:to-[#B3361E] text-white font-bold text-lg rounded-xl shadow-lg transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-60 flex items-center justify-center gap-2"
+          >
+            {submitting ? <><Loader2 size={20} className="animate-spin" /> Indo pro checkout...</> : <>IR PRO PAGAMENTO <ChevronRight size={20} /></>}
+          </button>
+        </form>
+        <div className="mt-4 flex items-center justify-center gap-3 text-xs text-[#5C4033]">
+          <span className="flex items-center gap-1"><Lock size={12} /> Seguro Hotmart</span>
+          <span>•</span>
+          <span>R$ 697 à vista ou 12x R$ 67,89</span>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -663,8 +796,15 @@ function Dobra12CTAFinal() {
 
 // =================== APP ===================
 function App() {
+  const [modalOpen, setModalOpen] = useState(false);
+  useEffect(() => {
+    CTX_SET_OPEN = setModalOpen;
+    return () => { CTX_SET_OPEN = null; };
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#FDF9F3] text-[#3D3D3D] selection:bg-[#C5A059] selection:text-white">
+      <CheckoutFormModal open={modalOpen} onClose={() => setModalOpen(false)} />
       <Dobra1Promessa />
       <Dobra2ProvaSocial />
       <GaleriaPecas />
