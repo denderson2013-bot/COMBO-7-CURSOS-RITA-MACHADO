@@ -817,12 +817,12 @@ function App() {
       <CheckoutFormModal open={modalOpen} onClose={() => setModalOpen(false)} />
       <TopBanner />
       <Dobra1Promessa />
+      <Dobra6TudoQueRecebe />
       <Dobra2ProvaSocial />
       <GaleriaPecas />
       <Dobra3ApertarPedra />
       <Dobra4Transicao />
       <Dobra5PassoAPasso />
-      <Dobra6TudoQueRecebe />
       <BannerDepoimentosTransformacao />
       <Dobra7ParaQuemServe />
       <Dobra8Ancoragem />
