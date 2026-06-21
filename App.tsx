@@ -65,6 +65,16 @@ const GALERIA_PECAS = [
   '/img/pecas/preciosidades-02.jpg',
 ];
 
+function TopBanner() {
+  return (
+    <div className="sticky top-0 z-50 bg-gradient-to-r from-[#A8261E] via-[#B3541E] to-[#A8261E] text-white py-2 px-4 text-center shadow-lg">
+      <p className="text-xs md:text-sm font-bold tracking-wide uppercase">
+        ⚠️ VAGAS LIMITADAS · Garanta a sua antes de esgotar
+      </p>
+    </div>
+  );
+}
+
 function Btn({ children, large = false }: { children: React.ReactNode; large?: boolean }) {
   return (
     <button
@@ -222,10 +232,10 @@ function Dobra1Promessa() {
           <div className="text-center md:text-left">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#A8261E] rounded-full mb-6 animate-pulse">
               <Zap size={14} className="text-white" />
-              <span className="text-xs md:text-sm font-bold text-white uppercase tracking-wider">🔥 OFERTA AO VIVO · APENAS HOJE</span>
+              <span className="text-xs md:text-sm font-bold text-white uppercase tracking-wider">🔥 VAGAS LIMITADAS</span>
             </div>
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Tenha acesso em <span className="text-[#C5A059]">1ª mão</span> a <span className="italic text-[#C5A059] font-serif">Coleção Diamante</span>
+              Tenha acesso em <span className="text-[#C5A059]">1ª mão</span> a <span className="italic text-[#C5A059] font-serif">Coleção Diamante 💎</span>
             </h1>
             <p className="text-lg md:text-xl text-[#D4C4A8] mb-8 leading-relaxed">
               Domine TODOS os caminhos do artesanato sacro católico em UM combo de 7 cursos completos.
@@ -520,7 +530,7 @@ function Dobra6TudoQueRecebe() {
             <p className="text-[#D4C4A8] text-lg">VALOR TOTAL DOS 7 CURSOS</p>
             <p className="text-3xl md:text-5xl font-bold line-through text-[#D4C4A8]/60">R$ 2.079</p>
             <div className="my-6 border-t border-[#3D3D3D]" />
-            <p className="text-[#C5A059] text-lg uppercase tracking-wider font-bold">SEU INVESTIMENTO HOJE</p>
+            <p className="text-[#C5A059] text-lg uppercase tracking-wider font-bold">SEU INVESTIMENTO</p>
             <p className="text-5xl md:text-7xl font-bold text-[#22C55E]">R$ 697</p>
             <p className="text-lg md:text-xl text-white">à vista <span className="text-[#D4C4A8]">ou</span> 12x R$ 67,89</p>
             <p className="text-sm text-[#22C55E] font-bold uppercase">Economia de R$ 1.382 (66% off)</p>
@@ -617,7 +627,7 @@ function Dobra8Ancoragem() {
           </div>
         </div>
         <div className="bg-gradient-to-br from-[#22C55E]/20 to-[#16A34A]/10 border-2 border-[#22C55E] rounded-2xl p-6 md:p-8 text-center">
-          <p className="text-[#D4C4A8] text-lg mb-3">HOJE, na live, você paga UMA ÚNICA VEZ</p>
+          <p className="text-[#D4C4A8] text-lg mb-3">Nessa oferta, você paga UMA ÚNICA VEZ</p>
           <p className="text-6xl md:text-8xl font-bold text-[#22C55E] mb-4">R$ 697</p>
           <p className="text-xl md:text-2xl text-white mb-6">e leva PRA SEMPRE</p>
           <div className="bg-[#1F1B16] rounded-2xl p-6 inline-block">
@@ -643,7 +653,7 @@ function Dobra9PrecoBotao() {
           <Zap size={14} className="text-[#A8261E]" />
           <span className="text-xs md:text-sm font-bold text-[#A8261E] uppercase tracking-wider">🔥 OFERTA EXCLUSIVA AO VIVO · VAGAS LIMITADAS</span>
         </div>
-        <h2 className="text-3xl md:text-5xl font-bold mb-8">SEU INVESTIMENTO HOJE</h2>
+        <h2 className="text-3xl md:text-5xl font-bold mb-8">SEU INVESTIMENTO</h2>
         <div className="bg-white text-[#3D3D3D] rounded-3xl p-8 md:p-12 shadow-2xl">
           <p className="text-2xl md:text-3xl line-through text-[#5C4033]/60 mb-2">De R$ 2.079</p>
           <p className="text-[#5C4033] uppercase tracking-wider text-sm mb-2">Por apenas</p>
@@ -776,7 +786,7 @@ function Dobra12CTAFinal() {
         </h2>
         <div className="bg-[#3D3D3D]/50 backdrop-blur rounded-2xl p-6 md:p-8 mb-8">
           <p className="text-[#D4C4A8] mb-4">Avulso renovando 5 anos: <span className="text-[#A8261E] font-bold">R$ 10.395</span></p>
-          <p className="text-[#D4C4A8] mb-6">HOJE, vitalício, UMA ÚNICA VEZ:</p>
+          <p className="text-[#D4C4A8] mb-6">Vitalício, UMA ÚNICA VEZ:</p>
           <p className="text-6xl md:text-8xl font-bold text-[#22C55E] mb-2">R$ 697</p>
           <p className="text-lg md:text-xl text-white">à vista <span className="text-[#D4C4A8]">ou</span> 12x R$ 67,89</p>
         </div>
@@ -805,6 +815,7 @@ function App() {
   return (
     <div className="min-h-screen bg-[#FDF9F3] text-[#3D3D3D] selection:bg-[#C5A059] selection:text-white">
       <CheckoutFormModal open={modalOpen} onClose={() => setModalOpen(false)} />
+      <TopBanner />
       <Dobra1Promessa />
       <Dobra2ProvaSocial />
       <GaleriaPecas />
