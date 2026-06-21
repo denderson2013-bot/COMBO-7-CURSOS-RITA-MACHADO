@@ -225,10 +225,10 @@ function Dobra1Promessa() {
               <span className="text-xs md:text-sm font-bold text-white uppercase tracking-wider">🔥 OFERTA AO VIVO · APENAS HOJE</span>
             </div>
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Domine <span className="text-[#C5A059]">TODOS</span> os caminhos do artesanato sacro católico em <span className="text-[#C5A059]">UM combo</span> de 7 cursos completos
+              Tenha acesso em <span className="text-[#C5A059]">1ª mão</span> a <span className="italic text-[#C5A059] font-serif">Coleção Diamante</span>
             </h1>
             <p className="text-lg md:text-xl text-[#D4C4A8] mb-8 leading-relaxed">
-              Vitalício. Pra sempre. A coleção completa de tudo o que a Rita ensinou nos últimos 12 anos.
+              Domine TODOS os caminhos do artesanato sacro católico em UM combo de 7 cursos completos.
             </p>
             <div className="flex flex-col items-center md:items-start gap-4">
               <Btn large>QUERO O COMBO COMPLETO POR R$ 697</Btn>
