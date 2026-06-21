@@ -205,7 +205,7 @@ function CheckoutFormModal({ open, onClose }: { open: boolean; onClose: () => vo
         <div className="mt-4 flex items-center justify-center gap-3 text-xs text-[#5C4033]">
           <span className="flex items-center gap-1"><Lock size={12} /> Seguro Hotmart</span>
           <span>•</span>
-          <span>R$ 697 à vista ou 12x R$ 67,89</span>
+          <span>R$ 697 à vista ou 12x R$ 69,70</span>
         </div>
       </div>
     </div>
@@ -242,7 +242,7 @@ function Dobra1Promessa() {
             </p>
             <div className="flex flex-col items-center md:items-start gap-4">
               <Btn large>QUERO O COMBO COMPLETO POR R$ 697</Btn>
-              <p className="text-sm text-[#C5A059]">ou 12x R$ 67,89 no cartão · Acesso imediato</p>
+              <p className="text-sm text-[#C5A059]">ou 12x R$ 69,70 no cartão · Acesso imediato</p>
             </div>
           </div>
           <div className="relative">
@@ -497,10 +497,13 @@ function Dobra6TudoQueRecebe() {
     <section className="py-16 md:py-20 px-4 bg-[#FDF9F3]">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-12">
-          <Eyebrow>Cada um vale R$ 297. Você leva os 7 por R$ 697.</Eyebrow>
-          <h2 className="text-3xl md:text-5xl font-bold text-[#3D3D3D]">
+          <Eyebrow>Cada curso vale R$ 297 / ano · Você leva os 7 PRA SEMPRE por R$ 697</Eyebrow>
+          <h2 className="text-3xl md:text-5xl font-bold text-[#3D3D3D] mb-4">
             Os <span className="text-[#B3541E]">7 cursos vitalícios</span> que você leva no combo
           </h2>
+          <p className="text-base md:text-lg text-[#5C4033] max-w-2xl mx-auto">
+            Pagando avulso, cada um custa <span className="font-bold text-[#A8261E]">R$ 297 por ano</span>. Multiplicado pelos 7, dá <span className="font-bold text-[#A8261E]">R$ 2.079 todo ano</span>. Hoje, vitalício, UMA ÚNICA VEZ, leva os 7 por R$ 697.
+          </p>
         </div>
         <div className="space-y-3">
           {CURSOS.map((c, i) => (
@@ -516,7 +519,7 @@ function Dobra6TudoQueRecebe() {
                   <div className="flex-1">
                     <div className="flex items-center justify-between gap-2 flex-wrap">
                       <h3 className="text-base md:text-xl font-bold text-[#3D3D3D]">{c.nome}</h3>
-                      <span className="text-xs md:text-sm font-bold text-[#C5A059] bg-[#C5A059]/10 px-3 py-1 rounded-full whitespace-nowrap">R$ 297</span>
+                      <span className="text-xs md:text-sm font-bold text-[#A8261E] bg-[#A8261E]/10 border border-[#A8261E]/30 px-3 py-1 rounded-full whitespace-nowrap">R$ 297 / ano</span>
                     </div>
                     <p className="text-sm text-[#5C4033] leading-relaxed mt-1">{c.desc}</p>
                   </div>
@@ -526,14 +529,27 @@ function Dobra6TudoQueRecebe() {
           ))}
         </div>
         <div className="mt-10 bg-gradient-to-br from-[#1F1B16] to-[#2C2620] text-white rounded-3xl p-8 md:p-10 shadow-2xl">
-          <div className="text-center space-y-4">
-            <p className="text-[#D4C4A8] text-lg">VALOR TOTAL DOS 7 CURSOS</p>
-            <p className="text-3xl md:text-5xl font-bold line-through text-[#D4C4A8]/60">R$ 2.079</p>
+          <div className="text-center space-y-3">
+            <p className="text-[#D4C4A8] text-sm md:text-base uppercase tracking-wider">Se você fosse pagar avulso</p>
+            <div className="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto py-4">
+              <div className="bg-[#3D3D3D]/40 rounded-2xl p-4">
+                <p className="text-[#D4C4A8] text-xs uppercase mb-1">Por ano</p>
+                <p className="text-2xl md:text-3xl font-bold text-[#A8261E]">R$ 2.079</p>
+                <p className="text-xs text-[#D4C4A8]">(7 × R$ 297)</p>
+              </div>
+              <div className="bg-[#3D3D3D]/40 rounded-2xl p-4">
+                <p className="text-[#D4C4A8] text-xs uppercase mb-1">7 cursos em 5 anos</p>
+                <p className="text-2xl md:text-3xl font-bold text-[#A8261E]">R$ 10.395</p>
+                <p className="text-xs text-[#D4C4A8]">(R$ 2.079 × 5 anos)</p>
+              </div>
+            </div>
             <div className="my-6 border-t border-[#3D3D3D]" />
-            <p className="text-[#C5A059] text-lg uppercase tracking-wider font-bold">SEU INVESTIMENTO</p>
+            <p className="text-[#C5A059] text-lg uppercase tracking-wider font-bold">INSCREVA-SE AGORA</p>
             <p className="text-5xl md:text-7xl font-bold text-[#22C55E]">R$ 697</p>
-            <p className="text-lg md:text-xl text-white">à vista <span className="text-[#D4C4A8]">ou</span> 12x R$ 67,89</p>
-            <p className="text-sm text-[#22C55E] font-bold uppercase">Economia de R$ 1.382 (66% off)</p>
+            <p className="text-lg md:text-xl text-white">à vista <span className="text-[#D4C4A8]">ou apenas</span></p>
+            <p className="text-3xl md:text-5xl font-bold text-[#22C55E]">12x R$ 69,70</p>
+            <p className="text-base md:text-lg text-white">com <span className="text-[#C5A059] font-bold">acesso vitalício</span> 💎</p>
+            <p className="text-sm text-[#22C55E] font-bold uppercase mt-3">Economia em 5 anos: R$ 9.698 (93% off)</p>
             <div className="pt-4">
               <Btn large>QUERO MEU COMBO COMPLETO</Btn>
             </div>
@@ -659,7 +675,7 @@ function Dobra9PrecoBotao() {
           <p className="text-[#5C4033] uppercase tracking-wider text-sm mb-2">Por apenas</p>
           <p className="text-6xl md:text-8xl font-bold text-[#B3541E] mb-2">R$ 697</p>
           <p className="text-lg md:text-xl text-[#3D3D3D] mb-2">à vista</p>
-          <p className="text-base md:text-lg text-[#5C4033] mb-8">ou <span className="font-bold">12x R$ 67,89</span> no cartão</p>
+          <p className="text-base md:text-lg text-[#5C4033] mb-8">ou <span className="font-bold">12x R$ 69,70</span> no cartão</p>
           <ul className="text-left max-w-md mx-auto space-y-3 mb-8">
             {[
               'Acesso imediato após pagamento',
@@ -788,7 +804,7 @@ function Dobra12CTAFinal() {
           <p className="text-[#D4C4A8] mb-4">Avulso renovando 5 anos: <span className="text-[#A8261E] font-bold">R$ 10.395</span></p>
           <p className="text-[#D4C4A8] mb-6">Vitalício, UMA ÚNICA VEZ:</p>
           <p className="text-6xl md:text-8xl font-bold text-[#22C55E] mb-2">R$ 697</p>
-          <p className="text-lg md:text-xl text-white">à vista <span className="text-[#D4C4A8]">ou</span> 12x R$ 67,89</p>
+          <p className="text-lg md:text-xl text-white">à vista <span className="text-[#D4C4A8]">ou</span> 12x R$ 69,70</p>
         </div>
         <Btn large>QUERO MEU COMBO POR R$ 697</Btn>
         <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-[#D4C4A8]">
