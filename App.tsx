@@ -351,7 +351,7 @@ function Dobra1Promessa() {
               Domine TODOS os caminhos do artesanato sacro católico em UM combo de 7 cursos completos.
             </p>
             <div className="flex flex-col items-center md:items-start gap-4">
-              <Btn large>QUERO O COMBO COMPLETO POR R$ 697</Btn>
+              <Btn large>QUERO A COLEÇÃO COMPLETA POR 12x DE R$ 72,09</Btn>
               <p className="text-sm text-[#C5A059]">ou 12x R$ 72,09 no cartão · Acesso imediato</p>
             </div>
           </div>
@@ -734,7 +734,7 @@ function Dobra6TudoQueRecebe() {
             <p className="text-base md:text-lg text-white">com <span className="text-[#C5A059] font-bold">acesso vitalício</span> 💎</p>
             <p className="text-sm text-[#22C55E] font-bold uppercase mt-3">Economia em 5 anos: R$ 9.698 (93% off)</p>
             <div className="pt-4">
-              <Btn large>QUERO MEU COMBO COMPLETO</Btn>
+              <Btn large>QUERO A COLEÇÃO COMPLETA POR 12x DE R$ 72,09</Btn>
             </div>
           </div>
         </div>
@@ -872,7 +872,7 @@ function Dobra9PrecoBotao() {
               </li>
             ))}
           </ul>
-          <Btn large>QUERO MEU COMBO COMPLETO</Btn>
+          <Btn large>QUERO A COLEÇÃO COMPLETA POR 12x DE R$ 72,09</Btn>
           <p className="text-sm text-[#5C4033] mt-4 flex items-center justify-center gap-2">
             <Lock size={14} /> Pagamento seguro via Hotmart
           </p>
@@ -989,7 +989,7 @@ function Dobra12CTAFinal() {
           <p className="text-6xl md:text-8xl font-bold text-[#22C55E] mb-2">R$ 697</p>
           <p className="text-lg md:text-xl text-white">à vista <span className="text-[#D4C4A8]">ou</span> 12x R$ 72,09</p>
         </div>
-        <Btn large>QUERO MEU COMBO POR R$ 697</Btn>
+        <Btn large>QUERO A COLEÇÃO COMPLETA POR 12x DE R$ 72,09</Btn>
         <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-[#D4C4A8]">
           <span className="flex items-center gap-1"><Lock size={14} /> Pagamento seguro Hotmart</span>
           <span className="flex items-center gap-1"><Check size={14} /> Acesso imediato</span>
