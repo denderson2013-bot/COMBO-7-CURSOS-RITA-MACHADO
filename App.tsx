@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Check, X, Star, Crown, Lock, Calendar, Award, Zap, Heart, Sparkles, AlertTriangle, ChevronRight, Clock, Shield, Loader2 } from 'lucide-react';
 
-const HOTMART_URL = 'https://pay.hotmart.com/PLACEHOLDER_COMBO_7?off=PLACEHOLDER';
+const HOTMART_URL = 'https://pay.hotmart.com/R106438511S?off=eks5a7z4&checkoutMode=10';
 const WEBHOOK_GHL = 'https://services.leadconnectorhq.com/hooks/k6QjNd1AOBLWkKhLvIP3/webhook-trigger/0a6fc78c-01d7-481a-9e6e-9a1e951eef4a';
 const DASHBOARD_WEBHOOK_COMBO = 'https://mighty-dont-supplemental-perfume.trycloudflare.com/api/inscricao-combo';
 
