@@ -315,7 +315,7 @@ function CheckoutFormModal({ open, onClose }: { open: boolean; onClose: () => vo
         <div className="mt-4 flex items-center justify-center gap-3 text-xs text-[#5C4033]">
           <span className="flex items-center gap-1"><Lock size={12} /> Seguro Hotmart</span>
           <span>•</span>
-          <span>R$ 697 à vista ou 12x R$ 69,70</span>
+          <span>R$ 697 à vista ou 12x R$ 72,09</span>
         </div>
       </div>
     </div>
@@ -352,7 +352,7 @@ function Dobra1Promessa() {
             </p>
             <div className="flex flex-col items-center md:items-start gap-4">
               <Btn large>QUERO O COMBO COMPLETO POR R$ 697</Btn>
-              <p className="text-sm text-[#C5A059]">ou 12x R$ 69,70 no cartão · Acesso imediato</p>
+              <p className="text-sm text-[#C5A059]">ou 12x R$ 72,09 no cartão · Acesso imediato</p>
             </div>
           </div>
           <div className="relative">
@@ -730,7 +730,7 @@ function Dobra6TudoQueRecebe() {
             <p className="text-[#C5A059] text-lg uppercase tracking-wider font-bold">INSCREVA-SE AGORA</p>
             <p className="text-5xl md:text-7xl font-bold text-[#22C55E]">R$ 697</p>
             <p className="text-lg md:text-xl text-white">à vista <span className="text-[#D4C4A8]">ou apenas</span></p>
-            <p className="text-3xl md:text-5xl font-bold text-[#22C55E]">12x R$ 69,70</p>
+            <p className="text-3xl md:text-5xl font-bold text-[#22C55E]">12x R$ 72,09</p>
             <p className="text-base md:text-lg text-white">com <span className="text-[#C5A059] font-bold">acesso vitalício</span> 💎</p>
             <p className="text-sm text-[#22C55E] font-bold uppercase mt-3">Economia em 5 anos: R$ 9.698 (93% off)</p>
             <div className="pt-4">
@@ -858,7 +858,7 @@ function Dobra9PrecoBotao() {
           <p className="text-[#5C4033] uppercase tracking-wider text-sm mb-2">Por apenas</p>
           <p className="text-6xl md:text-8xl font-bold text-[#B3541E] mb-2">R$ 697</p>
           <p className="text-lg md:text-xl text-[#3D3D3D] mb-2">à vista</p>
-          <p className="text-base md:text-lg text-[#5C4033] mb-8">ou <span className="font-bold">12x R$ 69,70</span> no cartão</p>
+          <p className="text-base md:text-lg text-[#5C4033] mb-8">ou <span className="font-bold">12x R$ 72,09</span> no cartão</p>
           <ul className="text-left max-w-md mx-auto space-y-3 mb-8">
             {[
               'Acesso imediato após pagamento',
@@ -987,7 +987,7 @@ function Dobra12CTAFinal() {
           <p className="text-[#D4C4A8] mb-4">Avulso renovando 5 anos: <span className="text-[#A8261E] font-bold">R$ 10.395</span></p>
           <p className="text-[#D4C4A8] mb-6">Vitalício, UMA ÚNICA VEZ:</p>
           <p className="text-6xl md:text-8xl font-bold text-[#22C55E] mb-2">R$ 697</p>
-          <p className="text-lg md:text-xl text-white">à vista <span className="text-[#D4C4A8]">ou</span> 12x R$ 69,70</p>
+          <p className="text-lg md:text-xl text-white">à vista <span className="text-[#D4C4A8]">ou</span> 12x R$ 72,09</p>
         </div>
         <Btn large>QUERO MEU COMBO POR R$ 697</Btn>
         <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-[#D4C4A8]">
