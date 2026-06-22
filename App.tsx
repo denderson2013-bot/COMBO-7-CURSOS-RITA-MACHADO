@@ -535,7 +535,7 @@ function Dobra4Transicao() {
     { titulo: 'Caminho completo, não retalho', desc: 'Os 7 cursos cobrem do iniciante ao avançado, de altar a terço, de monocromático a degradê, de customização a posicionamento.' },
     { titulo: 'Vitalício', desc: 'Você assiste, pausa, revisa, volta no seu ritmo, pra sempre. Sem mensalidade. Sem data de expiração.' },
     { titulo: 'Preço de UM curso, leva os 7', desc: 'Cada um vale R$ 297. Hoje, na live, leva os 7 por R$ 697. Economia de R$ 1.382. Não tem como repetir esse preço.' },
-    { titulo: 'Acesso ao MEU método completo', desc: 'O que eu construí nos últimos 12 anos, do banco que eu trabalhava ao ateliê que sustenta minha família. Tudo gravado, organizado, sem retalho.' },
+    { titulo: 'Acesso à Coleção Diamante completa', desc: 'Você leva os 7 cursos vitalícios da Coleção — e como o Combo 4 Cursos (Mini Combo) traz dentro dele Sagrada Família, Santa Rita Óleo, Monocromática Veronese e Pincel Seco + Efeito Mármore, na prática você sai com 10 cursos no total. Tudo gravado, organizado, no seu ritmo, pra sempre.' },
     { titulo: 'Vagas limitadas pra essa live', desc: 'Não é um produto disponível na vitrine. É exclusivo pra quem está aqui agora. Quando a live acabar OU os ingressos esgotarem, encerra. Sem volta.' },
   ];
   return (
