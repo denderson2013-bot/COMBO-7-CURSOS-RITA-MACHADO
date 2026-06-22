@@ -97,7 +97,7 @@ const CURSOS = [
   {
     nome: 'Degradê',
     desc: 'O método das 3 camadas. A tinta certa, a ordem certa, o tempo certo.',
-    img: '/img/pecas/guadalupe-02.jpg',
+    img: '/img/pecas/peca-07.jpg',
     modulos: [
       'Degradê em tinta acrílica fosca (Nossa Senhora Aparecida)',
       'Degradê em tinta metálica (degradê incrível)',
@@ -166,7 +166,7 @@ const GALERIA_PECAS = [
   '/img/pecas/peca-02.jpg',
   '/img/pecas/preciosidades-01.jpg',
   '/img/pecas/peca-03.jpg',
-  '/img/pecas/guadalupe-02.jpg',
+  '/img/pecas/peca-07.jpg',
   '/img/pecas/peca-04.jpg',
   '/img/pecas/guadalupe-03.jpg',
   '/img/pecas/peca-05.jpg',
