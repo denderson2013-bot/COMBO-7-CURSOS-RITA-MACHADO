@@ -60,7 +60,7 @@ const CURSOS = [
   {
     nome: 'Técnicas Monocromáticas',
     desc: 'Acabamento sofisticado em uma única cor. Mármore, bronze, madeira.',
-    img: '/img/pecas/peca-08.jpg',
+    img: '/img/pecas/monocromaticas-new.jpg',
     modulos: [
       'Base: preparação e reparos no gesso/resina',
       'Tipos de betume (qual usa pra que)',
@@ -97,7 +97,7 @@ const CURSOS = [
   {
     nome: 'Degradê',
     desc: 'O método das 3 camadas. A tinta certa, a ordem certa, o tempo certo.',
-    img: '/img/pecas/peca-07.jpg',
+    img: '/img/pecas/degrade-new.jpg',
     modulos: [
       'Degradê em tinta acrílica fosca (Nossa Senhora Aparecida)',
       'Degradê em tinta metálica (degradê incrível)',
@@ -111,7 +111,7 @@ const CURSOS = [
   {
     nome: 'Customize',
     desc: 'Personalização avançada de imagens religiosas. Transforma uma peça padrão em arte única.',
-    img: '/img/pecas/preciosidades-02.jpg',
+    img: '/img/pecas/customize-new.jpg',
     modulos: [
       'Fundação: cores e brancos, dourados, impermeabilização do gesso, PVA x acrílica, reparos no gesso',
       'N. Sra. Aparecida com manto em renda (iniciante mas requintada)',
@@ -131,7 +131,7 @@ const CURSOS = [
   {
     nome: 'Combo 4 Cursos (Mini Combo)',
     desc: 'Os 4 cursos essenciais agrupados. Base sólida pra começar.',
-    img: '/img/pecas/peca-09.jpg',
+    img: '/img/pecas/combo4-new.jpg',
     modulos: [
       'Sagrada Família: pintura perolada, betume sem erros, técnica básica de rostos, dourado, envelhecimento',
       'Santa Rita (Pintura a Óleo): introdução à óleo, luz e sombra, acabamento elegante',
