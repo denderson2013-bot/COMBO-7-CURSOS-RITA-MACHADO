@@ -161,18 +161,18 @@ const CURSOS = [
 ];
 
 const GALERIA_PECAS = [
-  '/img/pecas/peca-01.jpg',
-  '/img/pecas/guadalupe-01.jpg',
-  '/img/pecas/peca-02.jpg',
-  '/img/pecas/preciosidades-01.jpg',
-  '/img/pecas/peca-03.jpg',
-  '/img/pecas/peca-07.jpg',
-  '/img/pecas/peca-04.jpg',
-  '/img/pecas/guadalupe-03.jpg',
-  '/img/pecas/peca-05.jpg',
-  '/img/pecas/peca-06.jpg',
-  '/img/pecas/guadalupe-04.jpg',
-  '/img/pecas/preciosidades-02.jpg',
+  '/img/galeria-nova/galeria-01.jpg',
+  '/img/galeria-nova/galeria-02.jpg',
+  '/img/galeria-nova/galeria-03.jpg',
+  '/img/galeria-nova/galeria-04.jpg',
+  '/img/galeria-nova/galeria-05.jpg',
+  '/img/galeria-nova/galeria-06.jpg',
+  '/img/galeria-nova/galeria-07.jpg',
+  '/img/galeria-nova/galeria-08.jpg',
+  '/img/galeria-nova/galeria-09.jpg',
+  '/img/galeria-nova/galeria-10.jpg',
+  '/img/galeria-nova/galeria-11.jpg',
+  '/img/galeria-nova/galeria-12.jpg',
 ];
 
 function TopBanner() {
